@@ -18,12 +18,47 @@ module.exports = () => {
       path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
-      
+      new HtmlWebpackPlugin({
+        template: './index.html',
+        title: 'Webpack Plugin',
+      }),
+      new WebpackPwaManifest({
+        "name": "Scribble",
+        "short_name": "Scribble",
+        "start_url": ".",
+        "display": "standalone",
+        "background_color": "#fff",
+        "description": "A simple text editor to scribble your thoughts on",
+        "icons": [
+          {
+            "src": "./src/images/logo.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+          }
+        ],
+        "orientation": "portrait",
+        "theme_color": "#7eb4e2"
+      }),
     ],
 
     module: {
       rules: [
-        
+        {
+          test: /\.css$/i,
+          use: ['style-loader', 'css-loader'],
+        },
+        {
+          test: /\.m?js$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env'],
+              plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/transform-runtime'],
+            },
+          },
+        },
       ],
     },
   };
