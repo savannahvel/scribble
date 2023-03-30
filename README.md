@@ -6,7 +6,7 @@ Take notes with JS syntax highlighting
 ## Installation 
 npm i
 ## Usage 
-Once repo is cloned, in terminal run command 'npm run start'
+[Deployed Application](https://stormy-cove-62066.herokuapp.com/)
 ## Credit 
 [Starter Code](https://github.com/coding-boot-camp/cautious-meme)
 ## License 
